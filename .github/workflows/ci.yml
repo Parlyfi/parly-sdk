@@ -3,10 +3,19 @@ name: sdk-ci
 on:
   push:
   pull_request:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish @parly/sdk to npm
+        required: true
+        default: false
+        type: boolean
 
 jobs:
   sdk:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -16,5 +25,11 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
+          registry-url: https://registry.npmjs.org
+          scope: "@parly"
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm smoke:standalone
+      - if: github.event_name == 'workflow_dispatch' && inputs.publish
+        run: pnpm --filter @parly/sdk publish --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
