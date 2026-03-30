@@ -1,0 +1,20 @@
+{
+  "name": "parly-sdk-repo",
+  "private": true,
+  "packageManager": "pnpm@10.6.0",
+  "scripts": {
+    "lint": "pnpm -r --if-present run lint",
+    "build": "pnpm -r --if-present run build",
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "test": "pnpm --filter @parly/sdk run test:lz-options",
+    "pack:dry-run": "pnpm --filter @parly/sdk run pack:dry-run",
+    "publish:dry-run": "pnpm --filter @parly/sdk publish --dry-run --no-git-checks",
+    "smoke:standalone": "pnpm lint && pnpm typecheck && pnpm build && pnpm test && pnpm publish:dry-run"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "packages/sdk"
+  ]
+}
