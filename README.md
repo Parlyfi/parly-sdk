@@ -1,21 +1,40 @@
 # Parly SDK
 
-Production SDK for Parly private execution flows.
+Production TypeScript SDK for Parly private stablecoin payments on Tempo.
 
-## What this repo is
+## What this package is
 
-This repo contains the public Parly SDK package surface together with the vendored internal helper modules needed to build and validate that package from source.
+This package contains the `@parly/sdk` source and the small vendored helpers needed to build it from
+source. It is for developers and agent teams that want direct SDK integration.
 
-The primary published developer package is `@parly/sdk`.
+## What you can build
 
-## Work from this public repo
+- Recover private notes for Tempo USDC.e and USDT0 asset lanes.
+- Send from a Parly private balance with `sendShieldedPayment()`.
+- Use MPP session helpers for bounded agent payments.
+- Preflight MPP session payments, including counterparty and spend-limit checks, before proof
+  generation or transaction submission.
+- Query indexed leaves, envelopes, deposits, withdrawals, and recovery cursors.
+
+## Quick start
 
 ```bash
 pnpm install
 pnpm smoke:standalone
 ```
 
-## Repository layout
+Configure server-side execution with:
+
+- `AGENT_PRIVATE_KEY`
+- `TEMPO_RPC_URL`
+- `TEMPO_CHAIN_ID=4217`
+- `SETTLEMENT_DOMAIN_ID=4217`
+- `PONDER_GRAPHQL_URL`
+- `PARLY_SDK_ASSETS_PATH`
+
+Never expose agent keys, provider keys, or proof assets through browser public environment variables.
+
+## Package layout
 
 ```text
 packages/sdk
