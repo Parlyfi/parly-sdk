@@ -11,6 +11,7 @@ source. It is for developers and agent teams that want direct SDK integration.
 
 - Recover private notes for Tempo USDC.e and USDT0 asset lanes.
 - Send from a Parly private balance with `sendShieldedPayment()`.
+- Send up to 10 same-chain payout lanes with `sendShieldedBatchPayment()`.
 - Use MPP session helpers for bounded agent payments.
 - Preflight MPP session payments, including counterparty and spend-limit checks, before proof
   generation or transaction submission.
@@ -33,6 +34,9 @@ Configure server-side execution with:
 - `PARLY_SDK_ASSETS_PATH`
 
 Never expose agent keys, provider keys, or proof assets through browser public environment variables.
+
+Cross-chain deposits use the Parly payment-route APIs. Cross-chain private sends remain outside this
+SDK path until the public payout route is exposed.
 
 ## Package layout
 
