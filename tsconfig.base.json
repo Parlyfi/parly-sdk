@@ -9,10 +9,9 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": ".",
     "types": ["node"],
     "paths": {
-      "@parly/sdk": ["packages/sdk/src/index.ts"]
+      "@parly/sdk": ["./packages/sdk/src/index.ts"]
     }
   }
 }
