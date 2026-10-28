@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Adds the current V4 recovery, balance, preparation and same-chain single/batch payment API.
+- Adds V7 cross-chain quote, authorization, status and refund operations.
+- Adds OpenUSD (OUSD) alongside USDC.e and USDT0.
+- Shares the current execution implementation with the web client.
+
 ## 16.9.10-sdk.0
 
 - Allowlist launch-context output; never return signer keys or private endpoint configuration.
